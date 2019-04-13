@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-
+//
 
         // TODO (11) Permite administrar el DrawerLayout y el ActionBar
         // TODO (11.1) Implementa las caracteristicas recomendas
