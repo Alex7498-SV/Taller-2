@@ -1,5 +1,6 @@
 package com.naldana.ejemplo10
 
+import android.support.v4.app.Fragment
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
@@ -26,7 +27,10 @@ import java.io.IOException
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var viewAdapter: CurrencyAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var mainContentFragment: CurrencyFragment
     var twoPane = false
+
+    private fun changeFragment(id: Int, frag: Fragment){ supportFragmentManager.beginTransaction().replace(id, frag).commit() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +45,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-//
+
 
         // TODO (11) Permite administrar el DrawerLayout y el ActionBar
         // TODO (11.1) Implementa las caracteristicas recomendas
@@ -174,6 +178,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun pokemonItemClicked(item: Currency) {
         if (twoPane){
+
+            mainContentFragment = CurrencyFragment.newInstance(item)
+            changeFragment(R.id.fragment_content, mainContentFragment)
 
         }else{
             startActivity(Intent(this, CurrecncyActivity::class.java).putExtra("CLAVIER", item.name))
