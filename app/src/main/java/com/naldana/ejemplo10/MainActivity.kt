@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.google.gson.Gson
 import com.naldana.ejemplo10.adapters.CurrencyAdapter
 import com.naldana.ejemplo10.pojos.Currency
 import com.naldana.ejemplo10.utils.NetworkUtils
@@ -253,21 +254,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Log.i("JSONARRAY", results.toString())
             Log.i("JSONRESULT", results.length().toString().trim())
             MutableList(results.length()) { i ->
-                val resulty = JSONObject(results[i].toString())
-                Log.i("ARRAYRESULT", resulty.toString())
-                Log.i("KAKA", resulty.getString("name"))
+              //  val resulty = JSONObject(results[i].toString())
+                Gson().fromJson<Currency>(results[i].toString(), Currency::class.java)
 
-                Currency(
-                    i.toString(),
-                    resulty.getString("name").capitalize(),
-                    resulty.getString("country"),
-                    R.string.n_a_value.toString(),
-                    R.string.n_a_value.toString(),
-                    R.string.n_a_value.toString(),
-                    resulty.getString("name"),
-                    R.string.n_a_value.toString(),
-                    resulty.getString("img")
-                )
+
             }
         } else {
             MutableList(8) { i ->

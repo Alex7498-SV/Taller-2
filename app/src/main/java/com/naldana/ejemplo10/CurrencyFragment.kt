@@ -33,6 +33,10 @@ class CurrencyFragment: Fragment() {
     fun bindData(view: View){
         view.tv_frag_activity_name.text = currency.name
         view.tv_frag_activity_country.text = currency.country
+        view.tv_frag_activity_desc.text = currency.review
+        view.tv_currency_frag_activity_year.text = currency.year
+        view.tv_currency_frag_activity_valor.text = "Valor en USD"+currency.value_us
+        view.tv_currency_frag_activity_available.text = "En circulacion: "+currency.isAvailable
         Glide.with(view).load(currency.img)
             .placeholder(R.drawable.ic_launcher_background)
             .into(view.iv_currency_frag)

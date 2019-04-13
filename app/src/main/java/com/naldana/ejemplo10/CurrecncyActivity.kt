@@ -46,6 +46,9 @@ class CurrecncyActivity : AppCompatActivity() {
         tv_currency_activity_name.text = currency.name
         tv_currency_activity_country.text = currency.country
         tv_currency_activity_desc.text = currency.review
+        tv_currency_activity_year.text = currency.year
+        tv_currency_activity_valor.text = "valor en USD"+currency.value_us
+        tv_currency_activity_available.text = "en circulacion: "+currency.isAvailable
 
 
     }
